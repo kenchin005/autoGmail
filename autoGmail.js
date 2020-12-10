@@ -1,12 +1,22 @@
 
 function work(fn){
-  var sheet = SpreadsheetApp.openById("1eXLp8JhAJKDKAq01yTOgh_61GbtllMnhihSIpmMt3-s");
+  var sheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
   var shift = sheet.getSheetByName("12月(光通信)  ");
-  var range = shift.getRange(3,3,18,31).getValues();
+  var range = shift.getDataRange().getValues();
+  var date = new Date();
   console.log(range)
-  // if(){
-  //   fn();
-  // }
+  console.log(date)
+
+function findRow(shift,date,col){
+  var lastRow = shift.getDataRange().getLastRow();
+  for(var i=1;i<=lastRow;i++){
+    if(shift.getRange(0,i).getValue === date){
+      return values[2][i];
+    }
+  }
+
+  }
+  
 }
 
 
