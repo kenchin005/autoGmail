@@ -1,5 +1,13 @@
 
-
+function work(fn){
+  var sheet = SpreadsheetApp.openById("1eXLp8JhAJKDKAq01yTOgh_61GbtllMnhihSIpmMt3-s");
+  var shift = sheet.getSheetByName("12月(光通信)  ");
+  var range = shift.getRange(3,3,18,31).getValues();
+  console.log(range)
+  // if(){
+  //   fn();
+  // }
+}
 
 
 function createDraft() {
