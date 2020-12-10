@@ -1,3 +1,7 @@
+
+
+
+
 function createDraft() {
   
   const values = SpreadsheetApp.getActiveSheet().getDataRange().getValues();
@@ -25,3 +29,21 @@ function createDraft() {
 
   GmailApp.createDraft(to,subject,body,option);
 }
+
+// switch(tuesday){
+ 
+//   case "出勤":
+  
+// }
+
+
+// if(tuesday + wednesday){
+//   if(tuesday + wednesday === 1)  {
+//     tuesday = 10:30;
+//   }elseif(tuesday  wednesday === 2){
+
+//   }
+// }
+
+// https://docs.google.com/spreadsheets/d/1-EeaLnQxYxlfIbZzzwRMuwW95hRNSlFxOcWNOSx1gTk/edit?usp=sharing
+
