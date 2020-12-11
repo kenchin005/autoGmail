@@ -8,11 +8,13 @@ function work(fn){
   console.log(date)
 
 function findRow(){
-  const values = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM").getSheetByName("12月(光通信)  ").getDataRange().getValues();
-  var lastRow = values.getLastRow();
+  var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
+  var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
+  var lastrow = sheet.getLastRow();
+  var values = lastrow.getDataRange().getValues();
   var date = new Date();
-    for(var i=1;i<=lastRow;i++){
-      if(shift2.getRange(0,i).getValue === date){
+    for(var i=1;i<=31;i++){
+      if(sheet.getRange(0,i+1).getValue === date){
         switch(values[2][i]){
           case "出勤":
             return 1;
