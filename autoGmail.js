@@ -7,16 +7,26 @@ function work(fn){
   console.log(range)
   console.log(date)
 
-function findRow(shift,date,col){
-  var lastRow = shift.getDataRange().getLastRow();
-  for(var i=1;i<=lastRow;i++){
-    if(shift.getRange(0,i).getValue === date){
-      return values[2][i];
+function findRow(){
+  const values = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM").getSheetByName("12月(光通信)  ").getDataRange().getValues();
+  var lastRow = values.getLastRow();
+  var date = new Date();
+    for(var i=1;i<=lastRow;i++){
+      if(shift2.getRange(0,i).getValue === date){
+        switch(values[2][i]){
+          case "出勤":
+            return 1;
+            break;
+          case "公休":
+            return 2;
+            break;
+          default:
+
+        }
+      }
     }
   }
-
-  }
-  
+  console.log(findRow());
 }
 
 
