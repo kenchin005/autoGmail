@@ -14,7 +14,7 @@ function findRow(){
   var values = lastrow.getDataRange().getValues();
   var date = new Date();
     for(var i=1;i<=31;i++){
-      if(sheet.getRange(0,i+1).getValue === date){
+      if(sheet.getRange(1,i+1).getValue === date){
         switch(values[2][i]){
           case "出勤":
             return 1;
@@ -30,6 +30,29 @@ function findRow(){
   }
   console.log(findRow());
 }
+
+
+
+
+function findAll(){
+  var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
+  var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
+  var lastrow = sheet.getLastRow();
+  var values = sheet.getDataRange().getValues();
+  var date = new Date();
+  var textFinder = sheet.createTextFinder(date);
+
+
+    for(var i=2;i<=32;i++){
+            if(sheet.getRange(1,i).getValue() === date){
+              return i;
+      }
+      return 0
+    }
+  };
+
+
+
 
 
 function createDraft() {
