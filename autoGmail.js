@@ -1,36 +1,53 @@
 
 function work(fn){
-  var sheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
-  var shift = sheet.getSheetByName("12月(光通信)  ");
-  var range = shift.getDataRange().getValues();
+  var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
+  var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
+  var lastrow = sheet.getLastRow();
+  var values = sheet.getDataRange().getValues();
   var date = new Date();
   console.log(range)
   console.log(date)
 
-function findRow(){
+// function findRow(sheet,val,col){
+//   var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
+//   var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
+//   var lastrow = sheet.getLastRow();
+//   var values = lastrow.getDataRange().getValues();
+//   var date = new Date();
+//     for(var i=1;i<=31;i++){
+//       if(sheet.getRange(1,i+1).getValue === date){
+//         switch(values[2][i]){
+//           case "出勤":
+//             return 1;
+//             break;
+//           case "公休":
+//             return 2;
+//             break;
+//           default:
+
+//         }
+//       }
+//     }
+//   }
+//   console.log(findRow());
+}
+
+
+function findRow(sheet,val,col){
   var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
   var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
   var lastrow = sheet.getLastRow();
-  var values = lastrow.getDataRange().getValues();
+  var values = sheet.getDataRange().getValues();
   var date = new Date();
-    for(var i=1;i<=31;i++){
-      if(sheet.getRange(1,i+1).getValue === date){
-        switch(values[2][i]){
-          case "出勤":
-            return 1;
-            break;
-          case "公休":
-            return 2;
-            break;
-          default:
-
-        }
+    for(var i=1;i<=values.length;i++){
+            if(values[i][col-1] === val){
+              return i+1;
       }
+      return 0
     }
-  }
-  console.log(findRow());
-}
+};
 
+findRow(sheet,date,);
 
 
 
@@ -40,15 +57,21 @@ function findAll(){
   var lastrow = sheet.getLastRow();
   var values = sheet.getDataRange().getValues();
   var date = new Date();
+
   var textFinder = sheet.createTextFinder(date);
+  var ranges = textFinder.findAll();
 
 
-    for(var i=2;i<=32;i++){
-            if(sheet.getRange(1,i).getValue() === date){
-              return i;
-      }
-      return 0
-    }
+  for ( var i = 0; i < ranges.length; i++ ) {
+    Logger.log('A1Notation = ' + ranges[i].getA1Notation()) ;
+}
+
+    // for(var i=2;i<=32;i++){
+    //         if(sheet.getRange(1,i).getValue() === date){
+    //           return i;
+    //   }
+    //   return 0
+    // }
   };
 
 
