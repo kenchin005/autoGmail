@@ -16,16 +16,16 @@ function work(fn){
 //   var date = new Date();
 //     for(var i=1;i<=31;i++){
 //       if(sheet.getRange(1,i+1).getValue === date){
-//         switch(values[2][i]){
-//           case "出勤":
-//             return 1;
-//             break;
-//           case "公休":
-//             return 2;
-//             break;
-//           default:
+        switch(values[2][i]){
+          case "出勤":
+            return 1;
+            break;
+          case "公休":
+            return 2;
+            break;
+          default:
 
-//         }
+        }
 //       }
 //     }
 //   }
@@ -39,7 +39,7 @@ function findRow(sheet,val,col){
   var lastrow = sheet.getLastRow();
   var values = sheet.getDataRange().getValues();
   var date = new Date();
-    for(var i=1;i<=values.length;i++){
+    for(var i=1; i<=values.length;i++){
             if(values[i][col-1] === val){
               return i+1;
       }
