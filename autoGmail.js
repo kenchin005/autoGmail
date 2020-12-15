@@ -10,6 +10,20 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 
 function createDraft() {
 
+  // switch(todays.match(DOW)){
+  //   case "火":
+  //   values[5][1] === "《出勤打刻時間》11:00";
+  //   break;
+  
+  //   case "水":
+  //   if()  
+    
+  // }
+//悩み中1216
+
+
+
+
 const values = SpreadsheetApp.getActiveSheet().getDataRange().getValues();
 const to = values[1][1]; 
 const subject = values[3][1];
@@ -40,12 +54,17 @@ GmailApp.createDraft(to,subject,body,option);
 
 function createDraftOotsuka(sheet,today,col){
 
+var ary = ['日','月','火','水','木','金','土'];
 var today = new Date();
+var weekNum = today.getDay();
+var week = '('+ary[weekNum]+')';
+
 today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
-console.log(today)
+var todays = today+week
+console.log(todays)
 
   for(var i=1;i<=31;i++){
-          if(values[i][0] === today){
+          if(values[i][0] === todays){
             console.log(values[i][1]);
                
             switch(values[i][1]){
