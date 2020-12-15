@@ -8,7 +8,7 @@ let today = new Date();
 today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 
 
-function createDraft() {
+function createDraft(time) {
 
   // switch(todays.match(DOW)){
   //   case "火":
@@ -31,6 +31,10 @@ const subject = values[3][1];
 const option = {
 cc:values[2][1]
 };
+
+
+values[5][1] = time;
+
 
 let body = '';
 
@@ -71,7 +75,8 @@ console.log(todays)
                    
                   case "出勤":
                   console.log("作成します");
-                  createDraft();
+                  createDraft("《出勤打刻時間》11:00");
+              
                　　break;
                    
               
