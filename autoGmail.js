@@ -75,8 +75,16 @@ console.log(todays)
                    
                   case "出勤":
                   console.log("作成します");
-                  if(todays.match("火"||"木")){
-                    createDraft("《出勤打刻時間》10:30")
+                  if(todays.match("火")){
+                    createDraft("《出勤打刻時間》10:30");
+                  }else if(todays.match("水")){
+                    if(values[i-1][2].match("公休")){
+                      createDraft("《出勤打刻時間》10:30");
+                    }else{
+                      createDraft("《出勤打刻時間》11:00");
+                    }
+
+                     
                   }else{
                     createDraft("《出勤打刻時間》11:00");
                   }
