@@ -32,9 +32,9 @@ const option = {
 cc:values[2][1]
 };
 
-
+console.log(values[5][1])
 values[5][1] = time;
-
+console.log(values[5][1])
 
 let body = '';
 
@@ -69,13 +69,17 @@ console.log(todays)
 
   for(var i=1;i<=31;i++){
           if(values[i][0] === todays){
-            console.log(values[i][1]);
+            console.log(values[i][2]);
                
-            switch(values[i][1]){
+            switch(values[i][2]){
                    
                   case "出勤":
                   console.log("作成します");
-                  createDraft("《出勤打刻時間》11:00");
+                  if(todays.match("火"||"木")){
+                    createDraft("《出勤打刻時間》10:30")
+                  }else{
+                    createDraft("《出勤打刻時間》11:00");
+                  }
               
                　　break;
                    
