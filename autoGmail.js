@@ -67,27 +67,32 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 var todays = today+week
 console.log(todays)
 
+
   for(var i=1;i<=31;i++){
           if(values[i][0] === todays){
             console.log(values[i][2]);
-               
+            
             switch(values[i][2]){
                    
+
                   case "出勤":
                   console.log("作成します");
-                  if(todays.match("火")){
-                    createDraft("《出勤打刻時間》10:30");
-                  }else if(todays.match("水")){
-                    if(values[i-1][2].match("公休")){
-                      createDraft("《出勤打刻時間》10:30");
-                    }else{
-                      createDraft("《出勤打刻時間》11:00");
-                    }
+                  // if(todays.match("火")||todays.match("木")){
+                  //   createDraft("《出勤打刻時間》10:30");
+                  // }else if(todays.match("水")||todays.match("金")){
+                  //   if(values[i-1][2].match("公休")){
+                  //     createDraft("《出勤打刻時間》10:30");
+                  //   }else{
+                  //     createDraft("《出勤打刻時間》11:00");
+                  //   }
 
                      
-                  }else{
-                    createDraft("《出勤打刻時間》11:00");
-                  }
+                  // }else{
+                  //   createDraft("《出勤打刻時間》11:00");
+                  // }
+
+                  workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
+
               
                　　break;
                    
@@ -109,3 +114,26 @@ console.log(todays)
     
   }
 };
+
+
+function workMatch(workEarly,workLate){
+
+  var yesterday = values[i-1][2]
+
+
+if(todays.match("火")||todays.match("木")){
+  workEarly;
+}else if(todays.match("水")||todays.match("金")){
+  if(yesterday === "出勤"){
+    workLate;
+  }else{
+    workEarly;
+  }
+
+   
+}else{
+  workLate;
+}
+
+
+}
