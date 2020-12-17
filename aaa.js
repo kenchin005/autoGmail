@@ -115,6 +115,7 @@ if(todays.match("火")||todays.match("木")){
           }
     
   }
+  delTrigger();
 };
 
 
@@ -134,4 +135,14 @@ function setTrigger(){
 
   workMatch(early,late);
 
+}
+
+//トリガー削除
+function delTrigger(){
+  const triggers = ScriptApp.getProjectTriggers();
+  for(const trigger of triggers){
+    if(trigger.getHandlerFunction() == "createDraftOotsuka"){
+      ScriptApp.deleteTrigger(trigger);
+    }
+  }
 }

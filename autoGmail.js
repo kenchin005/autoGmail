@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 var spreadsheet = SpreadsheetApp.openById("197b40m1Y2WiFNEleVmFLEtVeiGZMjlYOBtE2fBDNbMM");
 var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
 var lastrow = sheet.getLastRow();
@@ -6,6 +13,10 @@ var values = sheet.getDataRange().getValues();
 let today = new Date();
 
 today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
+
+
+
+
 
 
 function createDraft(time) {
@@ -67,16 +78,44 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 var todays = today+week
 console.log(todays)
 
-
   for(var i=1;i<=31;i++){
           if(values[i][0] === todays){
             console.log(values[i][2]);
-            
+
+//もし合えば関数作成            
+function workMatch(workEarly,workLate){
+
+
+if(todays.match("火")||todays.match("木")){
+  workEarly;
+  console.log("火木")
+}else if(todays.match("水")||todays.match("金")){
+  if(values[i-1][2] === "出勤"){
+    workLate;
+    console.log("水金前日出勤")
+  }else{
+    workEarly;
+    console,log("水金前日公休")
+  }
+
+   
+}else{
+  workLate;
+}
+
+
+}
+//-------------------               
             switch(values[i][2]){
                    
-
                   case "出勤":
                   console.log("作成します");
+                
+                
+                
+                
+                workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
+                
                   // if(todays.match("火")||todays.match("木")){
                   //   createDraft("《出勤打刻時間》10:30");
                   // }else if(todays.match("水")||todays.match("金")){
@@ -90,9 +129,6 @@ console.log(todays)
                   // }else{
                   //   createDraft("《出勤打刻時間》11:00");
                   // }
-
-                  workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
-
               
                　　break;
                    
@@ -116,24 +152,50 @@ console.log(todays)
 };
 
 
-function workMatch(workEarly,workLate){
-
-  var yesterday = values[i-1][2]
 
 
-if(todays.match("火")||todays.match("木")){
-  workEarly;
-}else if(todays.match("水")||todays.match("金")){
-  if(yesterday === "出勤"){
-    workLate;
-  }else{
-    workEarly;
-  }
+//
+//function workMatch(workEarly,workLate){
+//
+//
+//if(todays.match("火")||todays.match("木")){
+//  workEarly;
+//}else if(todays.match("水")||todays.match("金")){
+//  if(values[i-1][2] === "出勤"){
+//    workLate;
+//  }else{
+//    workEarly;
+//  }
+//
+//   
+//}else{
+//  workLate;
+//}
+//
+//
+//}
 
-   
-}else{
-  workLate;
+//トリガー設定
+function setTrigger(){
+  const time = new Date();
+  var early = time.setHours(10);
+  time.setMinutes(20);
+  ScriptApp.newTrigger('createDraftOotsuka').timeBased().at(time).create();
+
+  var late = time.setHours(10);
+  time.setMinutes(50);
+  ScriptApp.newTrigger('createDraftOotsuka').timeBased().at(time).create();
+
+  workMatch(early,late);
+
 }
 
-
+//トリガー削除
+function delTrigger(){
+  const triggers = ScriptApp.getProjectTriggers();
+  for(const trigger of triggers){
+    if(trigger.getHandlerFunction() == "createDraftOotsuka"){
+      ScriptApp.deleteTrigger(trigger);
+    }
+  }
 }
