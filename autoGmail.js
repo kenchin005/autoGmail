@@ -116,19 +116,7 @@ if(todays.match("火")||todays.match("木")){
                 
                 workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
                 
-                  // if(todays.match("火")||todays.match("木")){
-                  //   createDraft("《出勤打刻時間》10:30");
-                  // }else if(todays.match("水")||todays.match("金")){
-                  //   if(values[i-1][2].match("公休")){
-                  //     createDraft("《出勤打刻時間》10:30");
-                  //   }else{
-                  //     createDraft("《出勤打刻時間》11:00");
-                  //   }
 
-                     
-                  // }else{
-                  //   createDraft("《出勤打刻時間》11:00");
-                  // }
               
                　　break;
                    
@@ -154,26 +142,6 @@ if(todays.match("火")||todays.match("木")){
 
 
 
-//
-//function workMatch(workEarly,workLate){
-//
-//
-//if(todays.match("火")||todays.match("木")){
-//  workEarly;
-//}else if(todays.match("水")||todays.match("金")){
-//  if(values[i-1][2] === "出勤"){
-//    workLate;
-//  }else{
-//    workEarly;
-//  }
-//
-//   
-//}else{
-//  workLate;
-//}
-//
-//
-//}
 
 //トリガー設定
 function setTrigger(){
