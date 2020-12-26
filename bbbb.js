@@ -14,6 +14,19 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 
 function createDraft(time) {
 
+  // switch(todays.match(DOW)){
+  //   case "火":
+  //   values[5][1] === "《出勤打刻時間》11:00";
+  //   break;
+  
+  //   case "水":
+  //   if()  
+    
+  // }
+//悩み中1216
+
+
+
 
 const values = SpreadsheetApp.getActiveSheet().getDataRange().getValues();
 const to = values[1][1]; 
@@ -47,7 +60,7 @@ GmailApp.createDraft(to,subject,body,option);
 }
 
 
-function createDraftOotsuka(){
+function createDraftOotsuka(sheet,today,col){
 
 var ary = ['日','月','火','水','木','金','土'];
 var today = new Date();
@@ -95,6 +108,8 @@ if(todays.match("火")||todays.match("木")){
                 
                 
                 workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
+                
+
               
                　　break;
                    
@@ -115,7 +130,6 @@ if(todays.match("火")||todays.match("木")){
           }
     
   }
-  delTrigger();
 };
 
 
