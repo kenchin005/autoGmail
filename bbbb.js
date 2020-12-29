@@ -3,7 +3,7 @@ var sheet = spreadsheet.getSheetByName("12月(光通信)  ");
 var lastrow = sheet.getLastRow();
 var values = sheet.getDataRange().getValues();
 
-let today = new Date();
+var today = new Date();
 
 today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 
