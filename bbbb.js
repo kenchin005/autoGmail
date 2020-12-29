@@ -11,21 +11,8 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 
 
 
-
+//下書き作成
 function createDraft(time) {
-
-  // switch(todays.match(DOW)){
-  //   case "火":
-  //   values[5][1] === "《出勤打刻時間》11:00";
-  //   break;
-  
-  //   case "水":
-  //   if()  
-    
-  // }
-//悩み中1216
-
-
 
 
 const values = SpreadsheetApp.getActiveSheet().getDataRange().getValues();
@@ -71,6 +58,7 @@ today = Utilities.formatDate(today,"JST", "yyyy/MM/dd");
 var todays = today+week
 console.log(todays)
 
+//配列を走査して判定
   for(var i=1;i<=31;i++){
           if(values[i][0] === todays){
             console.log(values[i][2]);
@@ -104,9 +92,7 @@ if(todays.match("火")||todays.match("木")){
                   case "出勤":
                   console.log("作成します");
                 
-                
-                
-                
+                //出勤なら前日の出勤情報確認して時刻設定
                 workMatch(createDraft("《出勤打刻時間》10:30"),createDraft("《出勤打刻時間》11:00"));
                 
 
